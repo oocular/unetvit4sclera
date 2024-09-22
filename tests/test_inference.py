@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import onnxruntime
 import torch
 import torchvision.transforms as transforms
 from loguru import logger
@@ -91,34 +92,69 @@ def test_inference():
         len(train_dataloader) == 17
     ), f"Expected 17 batches, but got {len(train_dataloader)}"
 
+    input_model_name = "unetvit_epoch_5_0.59060.pth"
+    model_name = input_model_name[:-4]
     model = UNet(n_channels=3, n_classes=6, bilinear=True).to(device)
-    model.load_state_dict(torch.load(MODELS_PATH + "/unetvit_epoch_5_0.59060.pth"))
+    model.load_state_dict(torch.load(MODELS_PATH + "/" + input_model_name))
     model.eval()
 
+    ## ONNX model
+    onnx_checkpoint_path = MODELS_PATH + "/" + str(model_name) + "-sim.onnx"
+    ort_session = onnxruntime.InferenceSession(
+        onnx_checkpoint_path, providers=["CPUExecutionProvider"]
+    )
+
+    # UserWarning: Specified provider 'CUDAExecutionProvider' is not in available
+    def to_numpy(tensor):
+        return (
+            tensor.detach().cpu().numpy()
+            if tensor.requires_grad
+            else tensor.cpu().numpy()
+        )
+
     # TODO: Add condition to plot this section
-    for batch_i, (x, y) in enumerate(test_dataloader):
-        for j in range(len(x)):
-            result = model(x[j : j + 1])
+    for i, (image_batch, ground_truth_masks) in enumerate(test_dataloader):
+        for batch_j in range(len(image_batch)):
+            image_batch_j = image_batch[batch_j : batch_j + 1]
+
+            # Pytorch model inference
+            result = model(image_batch_j)
             mask = torch.argmax(result, axis=1).cpu().detach().numpy()[0]
-            im = np.moveaxis(x[j].cpu().detach().numpy(), 0, -1).copy() * 255
+            im = (
+                np.moveaxis(image_batch[batch_j].cpu().detach().numpy(), 0, -1).copy()
+                * 255
+            )
             im = im.astype(int)
-            gt_mask = y[j].cpu()
+            gt_mask = ground_truth_masks[batch_j].cpu()
+
+            # onnx model inference
+            ort_inputs = {ort_session.get_inputs()[0].name: to_numpy(image_batch_j)}
+            ort_outs = torch.tensor(np.asarray(ort_session.run(None, ort_inputs)))
+            ort_outs = ort_outs.squeeze(0).squeeze(0)
+            ort_outs_argmax = torch.argmax(ort_outs, dim=0).cpu().detach().numpy()
 
             plt.figure(figsize=(12, 12))
 
-            plt.subplot(1, 3, 1)
-            im = np.moveaxis(x[j].cpu().detach().numpy(), 0, -1).copy() * 255
+            plt.subplot(1, 4, 1)
+            im = (
+                np.moveaxis(image_batch[batch_j].cpu().detach().numpy(), 0, -1).copy()
+                * 255
+            )
             im = im.astype(int)
             plt.imshow(im)
             plt.title("image")
 
-            plt.subplot(1, 3, 2)
+            plt.subplot(1, 4, 2)
             plt.imshow(gt_mask)
-            plt.title("gt_mask")
+            plt.title("Ground Truth Mask")
 
-            plt.subplot(1, 3, 3)
+            plt.subplot(1, 4, 3)
             plt.imshow(mask)
-            plt.title("predicted mask")
+            plt.title("Pytorch predicted mask")
+
+            plt.subplot(1, 4, 4)
+            plt.imshow(ort_outs_argmax)
+            plt.title("Onnx predicted mask")
 
             plt.show()
 
@@ -126,11 +162,11 @@ def test_inference():
     gt_list = []
     precision_list = []
     recall_list = []
-    for batch_i, (x, y) in enumerate(test_dataloader):
-        for j in range(len(x)):
-            result = model(x.to(device)[j : j + 1])
-            precision_list.append(precision(y[j], result))
-            recall_list.append(recall(y[j], result))
+    for i, (image_batch, ground_truth_masks) in enumerate(test_dataloader):
+        for batch_j in range(len(image_batch)):
+            result = model(image_batch.to(device)[batch_j : batch_j + 1])
+            precision_list.append(precision(ground_truth_masks[batch_j], result))
+            recall_list.append(recall(ground_truth_masks[batch_j], result))
 
     final_precision = np.nanmean(precision_list, axis=0)
     final_recall = np.nanmean(recall_list, axis=0)
