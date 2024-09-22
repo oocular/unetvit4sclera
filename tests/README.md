@@ -1,6 +1,12 @@
+# Tests
 
-
-
+## Export path and activate virtual environment
+```
 export PYTHONPATH=.
 source .venv/bin/activate #To activate the virtual environment:
-python src/unetvit/apis/pipeline.py 
+```
+
+## Test Train Pipeline
+```
+python src/unetvit/apis/train.py 
+```

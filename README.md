@@ -1,10 +1,17 @@
 # unetvit
 UNet-ViT model with train and inference workflows!
 
-## source venv and pre-commit
+## Source venv and pre-commit
 ```
 source .venv/bin/activate
 pre-commit run -a
+```
+
+## Tests
+```
+pytest -vv tests/test_inference.py
+pytest -vs tests/test_inference.py::test_segDataset
+pytest -vs tests/test_inference.py::test_inference
 ```
 
 ## Clone repo

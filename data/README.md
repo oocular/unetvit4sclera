@@ -36,3 +36,13 @@ Download dataset from https://www.kaggle.com/datasets/humansintheloop/semantic-s
 24 directories, 145 files
 ```
 
+## Models
+```
+~/datasets/unetvit/models$ tree -h
+[4.0K]  .
+├── [1.5K]  losses_190.6092257.cvs
+├── [387M]  unetvit_epoch_12_0.55486.pth
+└── [387M]  unetvit_epoch_5_0.59060.pth
+
+0 directories, 3 files
+```

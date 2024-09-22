@@ -26,6 +26,7 @@ dependencies = [
     "pillow",
     "scipy",
     "tqdm",
+    "loguru",
     "opencv-python-headless",
 ]
 [project.optional-dependencies]
