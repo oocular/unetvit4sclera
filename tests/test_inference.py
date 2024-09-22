@@ -7,9 +7,14 @@ from loguru import logger
 
 from src.unetvit.models.unetvit import UNet
 from src.unetvit.utils.datasets import segDataset
-from src.unetvit.utils.helpers import (DATASET_PATH, MODELS_PATH,
-                                       DeviceDataLoader, get_default_device,
-                                       precision, recall)
+from src.unetvit.utils.helpers import (
+    DATASET_PATH,
+    MODELS_PATH,
+    DeviceDataLoader,
+    get_default_device,
+    precision,
+    recall,
+)
 
 
 def test_segDataset():
