@@ -8,11 +8,11 @@ from argparse import ArgumentParser
 import torch
 import torch.nn as nn
 import torch.onnx
+from loguru import logger
 
 from src.unetvit.models.unetvit import UNet
-from src.unetvit.utils.helpers import get_default_device
-from src.unetvit.utils.helpers import MODELS_PATH
-from loguru import logger
+from src.unetvit.utils.helpers import MODELS_PATH, get_default_device
+
 
 def export_model(model, device, path_name, dummy_input):
     """
@@ -44,7 +44,7 @@ def main(input_model_name):
 
     IN: input_model_name with pth extension
         The input size of data to the model is [batch, channel, height, width]
-        It is definted by 
+        It is definted by
         dummy_input = torch.randn(1, 1, 400, 640, requires_grad=False).to(device)
 
     OUT: onnx model with onnx extension
@@ -61,11 +61,11 @@ def main(input_model_name):
     """
     device = get_default_device()
     logger.info(f"device : {device}")
-    
+
     number_of_channels = 3
 
     model_name = input_model_name[:-4]
-    models_path_input_name = MODELS_PATH + "/" + model_name + ".pth" 
+    models_path_input_name = MODELS_PATH + "/" + model_name + ".pth"
     models_path_output_name = MODELS_PATH + "/" + model_name + ".onnx"
 
     model = UNet(n_channels=number_of_channels, n_classes=6, bilinear=True).to(device)
@@ -76,9 +76,11 @@ def main(input_model_name):
 
     batch_size = 1  # just a random number
     dummy_input = torch.randn((batch_size, number_of_channels, 512, 512)).to(device)
-    
+
     export_model(model, device, models_path_output_name, dummy_input)
-    logger.info(f"ONNX conversion has been scussecful to create: {models_path_output_name}")
+    logger.info(
+        f"ONNX conversion has been scussecful to create: {models_path_output_name}"
+    )
 
 
 if __name__ == "__main__":
