@@ -14,33 +14,34 @@ repos:
   #   -   id: check-added-large-files
   - repo: local
     hooks:
-      # - id: pylint
-      #   # Creates a .pylintrc file in the tests directory
-      #   # pylint --generate-rcfile > tests/.pylintrc
-      #   name: pylint
-      #   entry: pylint
-      #   language: system
-      #   types: [python]
-      #   args:
-      #     [
-      #      "--rcfile=tests/.pylintrc"
-      #     ]
-      #   exclude: 'data/.*|docs/.*'
-      #   # exclude: 'tests/.*|src/unetvit/$PATH/.*'
+      - id: pylint
+        # Creates a .pylintrc file in the tests directory
+        # pylint --generate-rcfile > tests/.pylintrc
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          [
+           "--rcfile=tests/.pylintrc"
+          ]
+        exclude: 'data/.*|docs/.*'
+        # exclude: 'tests/.*|src/unetvit/$PATH/.*'
       - id: black
         name: black
         entry: black
         language: system
         types: [python]
-      # - id: isort
-      #   name: isort
-      #   entry: isort
-      #   language: system
-      #   types: [python]
-      # - id: codespell
-      #   name: codespell
-      #   description: Checks for common misspellings in text files.
-      #   entry: codespell
-      #   language: python
-      #   types: [ text ]
-      #   exclude: 'data/.*|docs/.*'
+      - id: isort
+        name: isort
+        entry: isort
+        language: system
+        types: [python]
+        exclude: 'tests/.*'
+      - id: codespell
+        name: codespell
+        description: Checks for common misspellings in text files.
+        entry: codespell
+        language: python
+        types: [ text ]
+        exclude: 'data/.*|docs/.*'
