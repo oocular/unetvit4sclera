@@ -7,18 +7,15 @@ source .venv/bin/activate
 pre-commit run -a
 ```
 
-## Model
-### Train
+## Model train and conversion
 ```
+# Train
 python src/unetvit/apis/train.py 
-```
-### Convert
-```
+# Convert
 python src/unetvit/utils/pytorch2onnx.py -i <model_name>.pth
 ```
 
-
-## Test
+## Test inference
 See [tests](tests)
 
 
