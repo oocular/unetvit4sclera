@@ -43,6 +43,11 @@ learning = [
     "torchvision", #
     "einops" #
 ]
+model_optimisation = [
+    "onnx", #1.16.2  local
+    "onnxruntime",#1.19.2 local
+    "onnxsim",#0.4.36 local
+]
 
 [tool.setuptools.dynamic]
 version = {attr = "unetvit.__version__"}

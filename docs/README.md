@@ -19,9 +19,9 @@ deactivate
 uv pip install --editable . # Install the package in editable mode
 uv pip install .[test]
 uv pip install .[learning]
-#uv pip uninstall ready
+uv pip install .[model_optimisation]
 
-uv pip install PyQt6
+#uv pip uninstall ready
 ```
 
 
