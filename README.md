@@ -7,12 +7,20 @@ source .venv/bin/activate
 pre-commit run -a
 ```
 
-## Tests
+## Model
+### Train
 ```
-pytest -vv tests/test_inference.py
-pytest -vs tests/test_inference.py::test_segDataset
-pytest -vs tests/test_inference.py::test_inference
+python src/unetvit/apis/train.py 
 ```
+### Convert
+```
+python src/unetvit/utils/pytorch2onnx.py -i <model_name>.pth
+```
+
+
+## Test
+See [tests](tests)
+
 
 ## Clone repo
 ```

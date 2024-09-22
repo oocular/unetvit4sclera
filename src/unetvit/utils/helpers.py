@@ -1,4 +1,11 @@
+from pathlib import Path
+
 import torch
+
+MAIN_DATASET_PATH = str(Path.home()) + "/datasets/unetvit"
+DATASET_PATH = MAIN_DATASET_PATH + "/semantic-segmentation-dataset"
+MODELS_PATH = MAIN_DATASET_PATH + "/models"
+
 
 def get_default_device():
     """
@@ -23,6 +30,7 @@ class DeviceDataLoader:
     """
     Move the batches of the data to our selected device
     """
+
     def __init__(self, dl, device):
         self.dl = dl
         self.device = device
@@ -33,7 +41,7 @@ class DeviceDataLoader:
 
     def __len__(self):
         return len(self.dl)
-    
+
 
 def precision(y, pred_mask, classes=6):
     """
@@ -61,4 +69,3 @@ def recall(y, pred_mask, classes=6):
         )
         recall_list.append(recall_val.numpy().tolist())
     return recall_list
-    
