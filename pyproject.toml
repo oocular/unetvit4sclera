@@ -26,6 +26,7 @@ dependencies = [
     "pillow",
     "scipy",
     "tqdm",
+    "loguru",
     "opencv-python-headless",
 ]
 [project.optional-dependencies]
@@ -42,6 +43,11 @@ learning = [
     "torch", #
     "torchvision", #
     "einops" #
+]
+model_optimisation = [
+    "onnx", #1.16.2  local
+    "onnxruntime",#1.19.2 local
+    "onnxsim",#0.4.36 local
 ]
 
 [tool.setuptools.dynamic]

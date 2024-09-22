@@ -25,8 +25,8 @@ repos:
           [
            "--rcfile=tests/.pylintrc"
           ]
-        exclude: 'data/.*|docs/.*|_deps/.*|tests/.*'
-        # exclude: 'data/.*|docs/.*|_deps/.*|tests/.*|src/unetvit/$PATH/.*'
+        exclude: 'data/.*|docs/.*'
+        # exclude: 'tests/.*|src/unetvit/$PATH/.*'
       - id: black
         name: black
         entry: black
@@ -37,6 +37,7 @@ repos:
         entry: isort
         language: system
         types: [python]
+        exclude: 'tests/.*'
       - id: codespell
         name: codespell
         description: Checks for common misspellings in text files.

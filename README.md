@@ -1,11 +1,23 @@
 # unetvit
 UNet-ViT model with train and inference workflows!
 
-## source venv and pre-commit
+## Source venv and pre-commit
 ```
 source .venv/bin/activate
 pre-commit run -a
 ```
+
+## Model train and conversion
+```
+# Train
+python src/unetvit/apis/train.py 
+# Convert
+python src/unetvit/utils/pytorch2onnx.py -i <model_name>.pth
+```
+
+## Test inference
+See [tests](tests)
+
 
 ## Clone repo
 ```

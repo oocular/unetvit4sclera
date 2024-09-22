@@ -246,7 +246,7 @@ for epoch in range(N_EPOCHS):
         torch.save(
             model.state_dict(),
             MAIN_DATASET_PATH
-            + "/models/unetvit_epoch_{}_{:.5f}.pt".format(
+            + "/models/unetvit_epoch_{}_{:.5f}.pth".format(
                 epoch, np.mean(val_loss_list)
             ),
         )
