@@ -1,9 +1,19 @@
 # Docs
 
 ## Install uv (An extremely fast Python package manager)
+* Linux and macOS
 ```
+#Linux
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
+* Windows
+```
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+https://docs.astral.sh/uv/getting-started/installation/#__tabbed_1_1
+
+
 ## Create venv
 ```
 uv venv --python 3.12 # Create a virtual environment at .venv.

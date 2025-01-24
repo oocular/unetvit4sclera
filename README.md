@@ -19,8 +19,11 @@ python src/unetvit/utils/pytorch2onnx.py -i <model_name>.pth
 See [tests](tests)
 
 
-## Clone repo
+## :octocat: Cloning repository
+* Generate your SSH keys as suggested [here](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+* Clone the repository by typing (or copying) the following lines in a terminal
 ```
+mkdir -p ~/repositories && cd ~/repositories
 git clone git@github.com:mxochicale/unetvit.git
 ```
 
