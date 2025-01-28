@@ -1,5 +1,5 @@
-# unetvit
-UNet-ViT model with train and inference workflows!
+# unetvit4sclera
+Open-Source UNet-ViT Workflow for Sclera Segmentation
 
 ## Source venv and pre-commit
 ```
@@ -10,9 +10,9 @@ pre-commit run -a
 ## Model train and conversion
 ```
 # Train
-python src/unetvit/apis/train.py 
+python src/unetvit4sclera/apis/train.py 
 # Convert
-python src/unetvit/utils/pytorch2onnx.py -i <model_name>.pth
+python src/unetvit4sclera/utils/pytorch2onnx.py -i <model_name>.pth
 ```
 
 ## Test inference
@@ -24,7 +24,7 @@ See [tests](tests)
 * Clone the repository by typing (or copying) the following lines in a terminal
 ```
 mkdir -p ~/repositories && cd ~/repositories
-git clone git@github.com:mxochicale/unetvit.git
+git clone git@github.com:mxochicale/unetvit4sclera.git
 ```
 
 ## Reference
