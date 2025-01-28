@@ -5,9 +5,9 @@ import torch
 import torchvision.transforms as transforms
 from loguru import logger
 
-from src.unetvit.models.unetvit import UNet
-from src.unetvit.utils.datasets import segDataset
-from src.unetvit.utils.helpers import (
+from src.unetvit4sclera.models.unetvit import UNet
+from src.unetvit4sclera.utils.datasets import segDataset
+from src.unetvit4sclera.utils.helpers import (
     DATASET_PATH,
     MODELS_PATH,
     DeviceDataLoader,
