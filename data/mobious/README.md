@@ -4,10 +4,11 @@ Full dataset (~3.5GB): this includes all the 16,717 RGB images from 100 subjects
 Of these subjects, 3559 (belonging to 35 subjects) are considered the segmentation subset, and are annotated with the sclera, iris, pupil, and periocular region.
 See further details here https://sclera.fri.uni-lj.si/datasets.html
 
+## Obtaining the datasets
+To obtain the MOBIUS dataset, please download, fill out, and hand-sign [this form](https://docs.google.com/document/d/17-wLf8cPXKfBIS2gRRTJJ0XjZUi_1CkoEW3yhi_KlFc/edit?tab=t.0), and send it to Matej at matej.vitek@fri.uni-lj.si. Please also indicate which of the following you require:
 
 ## Samples
 ![fig](mobious.svg)
-
 
 ## Details 
 Each image in the dataset is labeled as:
