@@ -1,3 +1,8 @@
+"""UNETVIT model for Sclera Segmentation
+
+This script contains the UNetViT model for Sclera Segmentation.
+Reference: https://www.kaggle.com/code/ganaianimesh/unet-with-vit
+"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

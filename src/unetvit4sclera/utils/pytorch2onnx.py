@@ -11,7 +11,6 @@ import torch.nn as nn
 import torch.onnx
 from loguru import logger
 from onnxsim import simplify
-
 from src.unetvit.models.unetvit import UNet
 from src.unetvit.utils.helpers import MODELS_PATH, get_default_device
 

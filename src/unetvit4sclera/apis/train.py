@@ -1,6 +1,6 @@
 """
 https://www.kaggle.com/code/ganaianimesh/unet-with-vit
-python src/unetvit/apis/train.py 
+python src/unetvit/apis/train.py
 """
 
 import os
@@ -15,10 +15,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.data
 import torchvision.transforms as transforms
-from torch.autograd import Variable
-
 from src.unetvit.models.unetvit import UNet
 from src.unetvit.utils.datasets import segDataset
+from torch.autograd import Variable
 
 MAIN_DATASET_PATH = str(Path.home()) + "/datasets/unetvit"
 DATASET_PATH = MAIN_DATASET_PATH + "/semantic-segmentation-dataset"

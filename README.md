@@ -1,31 +1,31 @@
 # unetvit4sclera
-Open-Source UNet-ViT Workflow for Sclera Segmentation
+Open-Source UNet-ViT Workflow for Debugging, Training, and Evaluating Sclera Segmentation
 
-## Source venv and pre-commit
+## :nut_and_bolt: Dev installation
 ```
-source .venv/bin/activate
-pre-commit run -a
+uv venv --python 3.12 # Create a virtual environment at .venv.
+source .venv/bin/activate #To activate the virtual environment
+uv pip install -e ".[test,learning,model_optimisation]" # Install the package in editable mode
+uv pip list --verbose #check versions
+pre-commit run -a #pre-commit hooks
 ```
+See further details for installation [here](docs).
 
-## Model train and conversion
+## :recycle: Model development
+* Pre-commit
+```bash
+bash scripts/activate_pre_commit.bash
 ```
-# Train
-python src/unetvit4sclera/apis/train.py 
-# Convert
-python src/unetvit4sclera/utils/pytorch2onnx.py -i <model_name>.pth
+* Test model train and optimisation
+```bash
+bash scripts/tests/unit_test_ml_pipeline.bash
 ```
-
-## Test inference
-See [tests](tests)
-
 
 ## :octocat: Cloning repository
 * Generate your SSH keys as suggested [here](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 * Clone the repository by typing (or copying) the following lines in a terminal
 ```
-mkdir -p ~/repositories && cd ~/repositories
-git clone git@github.com:mxochicale/unetvit4sclera.git
+mkdir -p ~/repositories/oocular && cd ~/repositories/oocular
+git clone git@github.com:oocular/unetvit4sclera.git
 ```
 
-## Reference
-https://www.kaggle.com/code/ganaianimesh/unet-with-vit

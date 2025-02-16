@@ -5,9 +5,9 @@ import torch
 import torchvision.transforms as transforms
 from loguru import logger
 
-from src.unetvit4sclera.models.unetvit import UNet
-from src.unetvit4sclera.utils.datasets import segDataset
-from src.unetvit4sclera.utils.helpers import (
+from unetvit4sclera.models.unetvit import UNet
+from unetvit4sclera.utils.datasets import segDataset
+from unetvit4sclera.utils.helpers import (
     DATASET_PATH,
     MODELS_PATH,
     DeviceDataLoader,
@@ -15,6 +15,14 @@ from src.unetvit4sclera.utils.helpers import (
     precision,
     recall,
 )
+
+
+def test_gpu_availability():
+    torch.cuda.is_available()
+    logger.info(f"GPU availability: {torch.cuda.is_available()}")
+    logger.info(f"GPU count: {torch.cuda.device_count()}")
+    logger.info(f"GPU name: {torch.cuda.get_device_name(0)}")
+    assert torch.cuda.is_available() == True, f"Expected GPU availability"
 
 
 def test_segDataset():

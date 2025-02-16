@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "unetvit"
+name = "unetvit4sclera"
 dynamic = ["version", "readme"]
 requires-python = ">=3.12" #python=3.12 local  #python3.10 apptainer
 keywords = ["AI"]
@@ -51,11 +51,11 @@ model_optimisation = [
 ]
 
 [tool.setuptools.dynamic]
-version = {attr = "unetvit.__version__"}
+version = {attr = "unetvit4sclera.__version__"}
 readme = {file = ["README.md"]}
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
-include = ["unetvit"]  # package names should match these glob patterns (["*"] by default)
+include = ["unetvit4sclera"]  # package names should match these glob patterns (["*"] by default)
 #exclude = ["my_package.tests*"]  # exclude packages matching these glob patterns (empty by default)
 namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
