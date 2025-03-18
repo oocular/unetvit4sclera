@@ -3,6 +3,7 @@
 This script contains the UNetViT model for Sclera Segmentation.
 Reference: https://www.kaggle.com/code/ganaianimesh/unet-with-vit
 """
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -238,9 +239,9 @@ class ViT(nn.Module):
 ## UNetViT Model
 
 
-class UNet(nn.Module):
+class UNetViT(nn.Module):
     def __init__(self, n_channels, n_classes, bilinear=True):
-        super(UNet, self).__init__()
+        super(UNetViT, self).__init__()
         self.n_channels = n_channels
         self.n_classes = n_classes
         self.bilinear = bilinear

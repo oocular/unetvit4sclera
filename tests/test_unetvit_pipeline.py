@@ -5,7 +5,7 @@ import torch
 import torchvision.transforms as transforms
 from loguru import logger
 
-from unetvit4sclera.models.unetvit import UNet
+from unetvit4sclera.models.unetvit import UNetViT
 from unetvit4sclera.utils.datasets import segDataset
 from unetvit4sclera.utils.helpers import (
     DATASET_PATH,
@@ -107,7 +107,7 @@ def test_inference():
 
     input_model_name = "unetvit_epoch_5_0.59060.pth"
     model_name = input_model_name[:-4]
-    model = UNet(n_channels=3, n_classes=6, bilinear=True).to(device)
+    model = UNetViT(n_channels=3, n_classes=6, bilinear=True).to(device)
     model.load_state_dict(torch.load(MODELS_PATH + "/" + input_model_name))
     model.eval()
 

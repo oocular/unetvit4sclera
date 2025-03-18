@@ -1,7 +1,16 @@
 # Aerial imagery
 
 ## Download 
-Download dataset from https://www.kaggle.com/datasets/humansintheloop/semantic-segmentation-of-aerial-imagery?resource=download
+Download dataset https://www.kaggle.com/datasets/humansintheloop/semantic-segmentation-of-aerial-imagery?resource=download
+
+* Using terminal
+```bash
+mkdir -p ~/datasets/unetvit && cd ~/datasets/unetvit
+wget -O semantic-segmentation-of-aerial-imagery.zip https://www.kaggle.com/api/v1/datasets/download/humansintheloop/semantic-segmentation-of-aerial-imagery
+unzip semantic-segmentation-of-aerial-imagery.zip
+mv Semantic\ segmentation\ dataset/ semantic-segmentation-dataset
+rm semantic-segmentation-of-aerial-imagery.zip
+```
 
 ## Dataset
 ```

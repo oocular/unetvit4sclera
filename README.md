@@ -16,9 +16,15 @@ See further details for installation [here](docs).
 ```bash
 bash scripts/activate_pre_commit.bash
 ```
-* Test model train and optimisation
+* Test models
 ```bash
-bash scripts/tests/unit_test_ml_pipeline.bash
+bash scripts/tests/unit_test_unet_pipeline.bash #TO TEST unet; please edit bash to test other modules
+# bash scripts/tests/unit_test_unetvit_pipeline.bash #TO TEST unetvit; please edit bash to test other modules
+```
+* Train models
+```bash
+bash scripts/models/train_unet_with_mobious.bash
+bash scripts/models/train_unetvit_with_segdataset.bash
 ```
 
 ## :octocat: Cloning repository
