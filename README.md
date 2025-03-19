@@ -1,7 +1,16 @@
 # unetvit4sclera
-Open-Source UNet-ViT Workflow for Debugging, Training, and Evaluating Sclera Segmentation
+
+## :eyeglasses: Overview
+This repository contains documentation and code for Open-Source UNet and UNet-ViT models for debugging, training, and evaluating sclera segmentation workflows.
+
+## :school_satchel: Getting started
+* :page_facing_up: [Docs](docs/README.md) Getting started, debugging, testing, demos.
+* :floppy_disk: [Data](data/): [SBVPI](data/sbvpi); [mobious](data/mobious);
+* :brain: [unet](src/unetvit4sclera/models/unet.py) and [unetvit](src/unetvit4sclera/models/unetvit.py)
 
 ## :nut_and_bolt: Dev installation
+Commands to start your dev installation.
+See further details for installation [here](docs).
 ```
 uv venv --python 3.12 # Create a virtual environment at .venv.
 source .venv/bin/activate #To activate the virtual environment
@@ -9,9 +18,10 @@ uv pip install -e ".[test,learning,model_optimisation]" # Install the package in
 uv pip list --verbose #check versions
 pre-commit run -a #pre-commit hooks
 ```
-See further details for installation [here](docs).
 
 ## :recycle: Model development
+Run the following commands from the root directory of your cloned repository to execute the Bash scripts.
+We encourage contributions for any enhancements you identify. See our guidelines [here](CONTRIBUTING.md).
 * Pre-commit
 ```bash
 bash scripts/activate_pre_commit.bash
