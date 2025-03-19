@@ -18,6 +18,6 @@ Some of these might not be relevant, so feel free to skip them and add questions
 * [ ] Run bash scripts for:
     * `bash scripts/activate_pre_commit.bash`
     * `bash scripts/tests/unit_test_unet_pipeline.bash`
-* [ ] Familiarise yourself with the repository and organise a code review session with a colleague.
+* [ ] Familiarise yourself with the repository, [src code](https://github.com/oocular/unetvit4sclera/tree/main/src/unetvit4sclera), [data](https://github.com/oocular/unetvit4sclera/tree/main/data/sbvpi), [scripts](https://github.com/oocular/unetvit4sclera/tree/main/scripts), [tests](https://github.com/oocular/unetvit4sclera/tree/main/tests), and organise a code review session with the developer team.
 * [ ] Request SBVPI dataset to Matej Vitek by filling a form as shonwn [here](https://github.com/oocular/unetvit4sclera/tree/main/data/licence-agreements)
-* [ ] Modify `bash scripts/models/train_unet_with_mobious.bash` and related scripts to use sbvpi datasets.
+* [ ] Modify `bash scripts/models/train_unet_with_mobious.bash` and related scripts to use sbvpi datasets and run start developing unet and unetvit models.
