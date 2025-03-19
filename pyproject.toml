@@ -27,6 +27,7 @@ dependencies = [
     "scipy",
     "tqdm",
     "loguru",
+    "omegaconf",
     "opencv-python-headless",
 ]
 [project.optional-dependencies]
@@ -40,9 +41,10 @@ test = [
     "pre-commit"
 ]
 learning = [
-    "torch", #
-    "torchvision", #
-    "einops" #
+    "scikit-learn",
+    "torch",
+    "torchvision",
+    "einops",
 ]
 model_optimisation = [
     "onnx", #1.16.2  local

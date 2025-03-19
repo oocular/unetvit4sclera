@@ -15,8 +15,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.data
 import torchvision.transforms as transforms
-from src.unetvit.models.unetvit import UNet
-from src.unetvit.utils.datasets import segDataset
+from unetvit4sclera.models.unetvit import UNetViT
+from unetvit4sclera.utils.datasets import segDataset
 from torch.autograd import Variable
 
 MAIN_DATASET_PATH = str(Path.home()) + "/datasets/unetvit"
@@ -164,7 +164,7 @@ def recall(y, pred_mask, classes=6):
 
 min_loss = torch.tensor(float("inf"))
 
-model = UNet(n_channels=3, n_classes=6, bilinear=True).to(device)
+model = UNetViT(n_channels=3, n_classes=6, bilinear=True).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.5)
 
@@ -172,8 +172,8 @@ lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.5
 os.makedirs(MAIN_DATASET_PATH + "/models", exist_ok=True)
 
 
-# N_EPOCHS = 1
-N_EPOCHS = 20
+N_EPOCHS = 1
+# N_EPOCHS = 20
 # N_EPOCHS = 100
 N_DATA = len(train_dataset)
 N_TEST = len(test_dataset)
